@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello</title>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#test").text('Hi');
+            $.ajax({
+                type: "GET",
+                url: "/pdf"
+            })
+            .done(function( msg ) {
+                $('body').append('<embed width="800" height="800" src="data:application/pdf;base64,' + msg + '"></embed>');
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
