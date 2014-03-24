@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/pdf")
 public class MainController {
 
+    private final String url;
     private final String pdfLocation;
     private String encodedFileContents;
 
-    public MainController(String pdfLocation) {
+    public MainController(String url, String pdfLocation) {
+        this.url = url;
         this.pdfLocation = pdfLocation;
         encodedFileContents = Base64.encodeBase64String(readFile());
     }
@@ -32,7 +34,7 @@ public class MainController {
     @RequestMapping(method = GET)
     @ResponseBody
     public String display() {
-        return "http://192.168.7.137:8080/pdf/tos/1";
+        return url + "/pdf/tos/1";
     }
 
     @RequestMapping(value = "/tos/{id}", method = GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)

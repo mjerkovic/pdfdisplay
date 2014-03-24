@@ -17,6 +17,7 @@
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
 
     <bean class="com.mlj.pdfdisplay.MainController">
+        <constructor-arg value="${pdf.url}"/>
         <constructor-arg value="${pdf.location}"/>
     </bean>
 
