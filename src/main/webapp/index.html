@@ -3,14 +3,15 @@
 <head>
     <title>Hello</title>
     <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/pdfobject.js"></script>
     <script>
         $(document).ready(function(){
             $.ajax({
                 type: "GET",
                 url: "/pdf"
             })
-            .done(function( msg ) {
-                $('body').append('<object width="800" height="800" data="'+ msg + '"></object>');
+            .done(function(msg) {
+                var success = new PDFObject({ url: msg }).embed();
             });
         });
     </script>
